@@ -50,6 +50,10 @@ app.use('/api/users', userRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
+app.get('/', (req, res) => {
+  res.send('✅ Server is live!');
+});
+
 
 // Error handler
 app.use(errorHandler);
