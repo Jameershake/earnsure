@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "home": "Home",
+    "jobs": "Find Jobs",
+    "postJob": "Post Job",
+    "wages": "Wage Benchmarks",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "about": "About",
+    "contact": "Contact",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "EarnSure - Empowering Daily Wage Workers",
+    "subtitle": "Connect with verified employers, ensure fair wages, and secure your future",
+    "getStarted": "Get Started",
+    "features": {
+      "title": "Our Features",
+      "fairWages": "Fair Wage Transparency",
+      "fairWagesDesc": "Access local wage benchmarks to ensure fair compensation",
+      "verifiedJobs": "Verified Job Opportunities",
+      "verifiedJobsDesc": "Connect with verified employers for secure employment",
+      "financial": "Financial Inclusion",
+      "financialDesc": "Access microloans, savings tools, and insurance",
+      "multilingual": "Multilingual Support",
+      "multilingualDesc": "Use the platform in your preferred language"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone Number",
+    "role": "I am a",
+    "worker": "Worker",
+    "employer": "Employer",
+    "loginBtn": "Login",
+    "registerBtn": "Register",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  },
+  "jobs": {
+    "title": "Available Jobs",
+    "search": "Search jobs...",
+    "filter": "Filter",
+    "category": "Category",
+    "location": "Location",
+    "minWage": "Minimum Wage",
+    "apply": "Apply Now",
+    "applied": "Applied",
+    "postedBy": "Posted by",
+    "workersNeeded": "Workers Needed",
+    "duration": "Duration",
+    "requirements": "Requirements"
+  },
+  "postJob": {
+    "title": "Post a New Job",
+    "jobTitle": "Job Title",
+    "description": "Description",
+    "category": "Category",
+    "wage": "Wage Amount",
+    "wageType": "Wage Type",
+    "duration": "Duration",
+    "workersNeeded": "Workers Needed",
+    "city": "City",
+    "state": "State",
+    "address": "Address",
+    "requirements": "Requirements (comma separated)",
+    "startDate": "Start Date",
+    "postBtn": "Post Job"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "profile": "My Profile",
+    "myJobs": "My Jobs",
+    "applications": "My Applications",
+    "stats": "Statistics"
+  }
+}
