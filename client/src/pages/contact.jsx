@@ -52,7 +52,7 @@ const Contact = () => {
               <FaPhone className="contact-icon" />
               <div>
                 <h4>Phone</h4>
-                <p>+91 1800-123-4567 (Toll Free)</p>
+                <p>+91 8897198489(Toll Free)</p>
                 <p>Available Mon-Sat, 9 AM - 6 PM</p>
               </div>
             </div>
