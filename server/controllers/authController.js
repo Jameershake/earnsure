@@ -6,7 +6,7 @@ import generateToken from '../utils/generateToken.js';
 // @access  Public
 export const register = async (req, res) => {
   try {
-    const { name, email, password, role, phone, location, skills } = req.body;
+    const { name, email, password, role, phone, location, skills, rememberMe } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -30,7 +30,8 @@ export const register = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        token: generateToken(user._id)
+        phone: user.phone,
+        token: generateToken(user._id, user.role, rememberMe) // ← Updated
       });
     } else {
       res.status(400).json({ message: 'Invalid user data' });
@@ -45,7 +46,7 @@ export const register = async (req, res) => {
 // @access  Public
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, rememberMe } = req.body; // ← Added rememberMe
 
     const user = await User.findOne({ email }).select('+password');
 
@@ -55,7 +56,8 @@ export const login = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        token: generateToken(user._id)
+        phone: user.phone,
+        token: generateToken(user._id, user.role, rememberMe) // ← Updated
       });
     } else {
       res.status(401).json({ message: 'Invalid email or password' });

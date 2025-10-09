@@ -22,8 +22,8 @@ import './utils/i18n';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <div className="app">
           <Navbar />
           <main className="main-content">
@@ -32,6 +32,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/jobs" element={<JobListings />} />
+              <Route path="/jobs/:id" element={<JobDetails />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/post-job" element={<PostJob />} />
               <Route path="/wages" element={<WageBenchmark />} />
@@ -41,15 +42,13 @@ function App() {
               <Route path="/manage/:jobId" element={<ManageApplications />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
-              <Route path="/jobs/:id" element={<JobDetails />} />
-
             </Routes>
           </main>
           <Footer />
           <ToastContainer position="top-right" autoClose={3000} />
         </div>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

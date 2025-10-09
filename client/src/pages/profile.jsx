@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import AuthContext from '../context/AuthContext';
-import axios from 'axios';
+import { getProfile, updateProfile } from '../services/api';
 import { FaUser, FaEdit, FaSave, FaTimes, FaStar } from 'react-icons/fa';
 
 const Profile = () => {
@@ -10,8 +10,11 @@ const Profile = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  // ✅ All values initialized with empty strings (never undefined)
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     phone: '',
     location: {
       city: '',
@@ -32,18 +35,26 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/auth/profile`, {
-        headers: { Authorization: `Bearer ${user.token}` }
-      });
+      const { data } = await getProfile();
+      
+      // ✅ All values have fallbacks
       setFormData({
         name: data.name || '',
+        email: data.email || user?.email || '',
         phone: data.phone || '',
-        location: data.location || { city: '', state: '', pincode: '' },
+        location: {
+          city: data.location?.city || '',
+          state: data.location?.state || '',
+          pincode: data.location?.pincode || ''
+        },
         skills: data.skills || [],
         experience: data.experience || 0
       });
     } catch (error) {
-      toast.error('Failed to load profile');
+      console.error('Profile fetch error:', error);
+      if (error.response?.status !== 401) {
+        toast.error('Failed to load profile');
+      }
     }
   };
 
@@ -71,15 +82,15 @@ const Profile = () => {
     setLoading(true);
 
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/users/profile`, formData, {
-        headers: { Authorization: `Bearer ${user.token}` }
-      });
+      await updateProfile(formData);
       
       toast.success('Profile updated successfully!');
       setIsEditing(false);
       fetchProfile();
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to update profile');
+      if (error.response?.status !== 401) {
+        toast.error(error.response?.data?.message || 'Failed to update profile');
+      }
     } finally {
       setLoading(false);
     }
@@ -93,8 +104,8 @@ const Profile = () => {
             <FaUser />
           </div>
           <div className="profile-info">
-            <h1>{formData.name}</h1>
-            <p className="role-tag">{user?.role}</p>
+            <h1>{formData.name || 'User'}</h1>
+            <p className="role-tag">{user?.role || 'worker'}</p>
             <div className="profile-stats">
               <div className="stat">
                 <FaStar className="star" />
@@ -134,7 +145,7 @@ const Profile = () => {
               <label>Email (Cannot be changed)</label>
               <input
                 type="email"
-                value={user?.email}
+                value={formData.email || user?.email || ''}
                 disabled
                 className="disabled-input"
               />
@@ -162,7 +173,7 @@ const Profile = () => {
                 <input
                   type="text"
                   name="location.city"
-                  value={formData.location?.city || ''}
+                  value={formData.location.city}
                   onChange={handleChange}
                   disabled={!isEditing}
                   placeholder="Enter city"
@@ -174,7 +185,7 @@ const Profile = () => {
                 <input
                   type="text"
                   name="location.state"
-                  value={formData.location?.state || ''}
+                  value={formData.location.state}
                   onChange={handleChange}
                   disabled={!isEditing}
                   placeholder="Enter state"
@@ -186,7 +197,7 @@ const Profile = () => {
                 <input
                   type="text"
                   name="location.pincode"
-                  value={formData.location?.pincode || ''}
+                  value={formData.location.pincode}
                   onChange={handleChange}
                   disabled={!isEditing}
                   placeholder="Enter pincode"
@@ -204,7 +215,7 @@ const Profile = () => {
                 <input
                   type="text"
                   name="skills"
-                  value={formData.skills?.join(', ') || ''}
+                  value={formData.skills.join(', ')}
                   onChange={handleChange}
                   disabled={!isEditing}
                   placeholder="e.g., Construction, Painting, Welding"

@@ -49,28 +49,43 @@
     "registerSubtitle": "Join EarnSure and start your journey",
     "email": "Email Address",
     "emailPlaceholder": "Enter your email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
+    "passwordRequired": "Password is required",
+    "passwordTooShort": "Password must be at least 6 characters",
     "confirmPassword": "Confirm Password",
     "confirmPasswordPlaceholder": "Re-enter your password",
+    "passwordMismatch": "Passwords do not match",
     "name": "Full Name",
     "namePlaceholder": "Enter your full name",
+    "nameRequired": "Name is required",
     "phone": "Phone Number",
     "phonePlaceholder": "Enter your phone number",
+    "phoneRequired": "Phone number is required",
     "role": "I am a",
     "worker": "Worker",
     "employer": "Employer",
     "selectRole": "Select your role",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot Password?",
+    "login": "Login",
     "loginButton": "Login",
-    "registerButton": "Register",
+    "loginHere": "Login here",
     "loggingIn": "Logging in...",
+    "register": "Register",
+    "registerButton": "Register",
+    "registerBtn": "Register",
+    "registerHere": "Register here",
     "registering": "Registering...",
     "noAccount": "Don't have an account?",
     "haveAccount": "Already have an account?",
-    "loginHere": "Login here",
-    "registerHere": "Register here"
+    "invalidCredentials": "Invalid email or password",
+    "tooManyAttempts": "Too many attempts. Please try again later.",
+    "loginFailed": "Login failed. Please try again.",
+    "registerSuccess": "Registration successful!",
+    "registerFailed": "Registration failed. Please try again."
   },
   "jobs": {
     "title": "Find Jobs",
@@ -162,6 +177,7 @@
     "contactInfo": "Contact Information"
   },
   "common": {
+    "or": "or",
     "yes": "Yes",
     "no": "No",
     "ok": "OK",
@@ -171,6 +187,7 @@
     "rating": "Rating"
   },
   "errors": {
+    "networkError": "Network error. Please check your connection.",
     "genericError": "Something went wrong. Please try again."
   }
 }

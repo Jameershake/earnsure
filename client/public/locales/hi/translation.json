@@ -49,28 +49,43 @@
     "registerSubtitle": "अर्नश्योर से जुड़ें और अपनी यात्रा शुरू करें",
     "email": "मेल पता",
     "emailPlaceholder": "अपना ईमेल दर्ज करें",
+    "emailRequired": "ईमेल की जरूरत है",
+    "emailInvalid": "कृपया एक मान्य ईमेल दर्ज करें",
     "password": "पासवर्ड",
     "passwordPlaceholder": "अपना कूटशब्द भरें",
+    "passwordRequired": "पासवर्ड आवश्यक है",
+    "passwordTooShort": "पासवर्ड कम से कम 6 अंकों का होना चाहिए",
     "confirmPassword": "पासवर्ड की पुष्टि कीजिये",
     "confirmPasswordPlaceholder": "अपना पासवर्ड पुनः दर्ज करें",
+    "passwordMismatch": "सांकेतिक शब्द मेल नहीं खाते",
     "name": "पूरा नाम",
     "namePlaceholder": "अपना पूरा नाम भरें",
+    "nameRequired": "नाम आवश्यक है",
     "phone": "फ़ोन नंबर",
     "phonePlaceholder": "अपना फोन नंबर डालें",
+    "phoneRequired": "फ़ोन नंबर आवश्यक है",
     "role": "मैं एक हूँ",
     "worker": "मज़दूर",
     "employer": "नियोक्ता",
     "selectRole": "अपनी भूमिका चुनें",
     "rememberMe": "मुझे याद करो",
     "forgotPassword": "पासवर्ड भूल गए?",
+    "login": "लॉग इन करें",
     "loginButton": "लॉग इन करें",
-    "registerButton": "पंजीकरण करवाना",
+    "loginHere": "यहां लॉगिन करें",
     "loggingIn": "प्रवेश किया...",
+    "register": "पंजीकरण करवाना",
+    "registerButton": "पंजीकरण करवाना",
+    "registerBtn": "पंजीकरण करवाना",
+    "registerHere": "यहां रजिस्टर करें",
     "registering": "पंजीकरण हो रहा है...",
     "noAccount": "कोई खाता नहीं है?",
     "haveAccount": "क्या आपके पास पहले से एक खाता मौजूद है?",
-    "loginHere": "यहां लॉगिन करें",
-    "registerHere": "यहां रजिस्टर करें"
+    "invalidCredentials": "अमान्य ईमेल या पासवर्ड",
+    "tooManyAttempts": "बहुत अधिक प्रयास. ",
+    "loginFailed": "लॉगिन विफल। ",
+    "registerSuccess": "सफल पंजीकरण!",
+    "registerFailed": "पंजीकरण विफल रहा। "
   },
   "jobs": {
     "title": "नौकरी ढूंढे",
@@ -162,6 +177,7 @@
     "contactInfo": "संपर्क जानकारी"
   },
   "common": {
+    "or": "या",
     "yes": "हाँ",
     "no": "नहीं",
     "ok": "ठीक है",
@@ -171,6 +187,7 @@
     "rating": "रेटिंग"
   },
   "errors": {
+    "networkError": "नेटवर्क त्रुटि। ",
     "genericError": "कुछ गलत हो गया। "
   }
 }
