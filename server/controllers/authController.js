@@ -31,7 +31,7 @@ export const register = async (req, res) => {
         email: user.email,
         role: user.role,
         phone: user.phone,
-        token: generateToken(user._id, user.role, rememberMe) // ← Updated
+        token: generateToken(user._id, user.role, rememberMe)
       });
     } else {
       res.status(400).json({ message: 'Invalid user data' });
@@ -46,7 +46,7 @@ export const register = async (req, res) => {
 // @access  Public
 export const login = async (req, res) => {
   try {
-    const { email, password, rememberMe } = req.body; // ← Added rememberMe
+    const { email, password, rememberMe } = req.body;
 
     const user = await User.findOne({ email }).select('+password');
 
@@ -57,7 +57,7 @@ export const login = async (req, res) => {
         email: user.email,
         role: user.role,
         phone: user.phone,
-        token: generateToken(user._id, user.role, rememberMe) // ← Updated
+        token: generateToken(user._id, user.role, rememberMe)
       });
     } else {
       res.status(401).json({ message: 'Invalid email or password' });
@@ -92,5 +92,63 @@ export const getProfile = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Update user profile
+// @route   PUT /api/auth/profile
+// @access  Private
+export const updateProfile = async (req, res) => {
+  try {
+    console.log('📥 Update request received:', req.body);
+    console.log('👤 User ID:', req.user._id);
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update fields
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.phone) user.phone = req.body.phone;
+    
+    // Update location
+    if (req.body.location) {
+      user.location = {
+        city: req.body.location.city || '',
+        state: req.body.location.state || '',
+        pincode: req.body.location.pincode || ''
+      };
+    }
+
+    // Update worker-specific fields
+    if (user.role === 'worker') {
+      if (req.body.skills) user.skills = req.body.skills;
+      if (req.body.experience !== undefined) user.experience = req.body.experience;
+    }
+
+    const updatedUser = await user.save();
+
+    console.log('✅ Profile updated successfully');
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone: updatedUser.phone,
+      role: updatedUser.role,
+      location: updatedUser.location,
+      skills: updatedUser.skills,
+      experience: updatedUser.experience,
+      rating: updatedUser.rating,
+      completedJobs: updatedUser.completedJobs
+    });
+  } catch (error) {
+    console.error('❌ Update profile error:', error);
+    res.status(400).json({ 
+      message: 'Failed to update profile', 
+      error: error.message 
+    });
   }
 };
