@@ -11,7 +11,6 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
   
-  // ✅ All values initialized with empty strings (never undefined)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,7 +36,6 @@ const Profile = () => {
     try {
       const { data } = await getProfile();
       
-      // ✅ All values have fallbacks
       setFormData({
         name: data.name || '',
         email: data.email || user?.email || '',
@@ -117,9 +115,11 @@ const Profile = () => {
               </div>
             </div>
           </div>
+          
           <button
             onClick={() => setIsEditing(!isEditing)}
             className={isEditing ? 'btn-cancel' : 'btn-edit'}
+            type="button"
           >
             {isEditing ? <><FaTimes /> Cancel</> : <><FaEdit /> Edit Profile</>}
           </button>
