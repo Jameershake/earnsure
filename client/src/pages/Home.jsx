@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
-import { FaCheckCircle, FaBriefcase, FaChartLine, FaLanguage, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaBriefcase, FaChartLine, FaLanguage, FaUser } from 'react-icons/fa';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -15,20 +15,20 @@ const Home = () => {
         <div className="hero-content">
           {user ? (
             <>
-              <h1>Welcome back, {user.name}! 🎉</h1>
-              <p>Continue your journey with EarnSure</p>
+              <h1>{t('home.welcomeBack')}, {user.name}! 🎉</h1>
+              <p>{t('home.continueJourney')}</p>
               <div className="hero-buttons">
                 <button 
                   onClick={() => navigate('/dashboard')} 
                   className="btn-primary"
                 >
-                  <FaUser /> Go to Dashboard
+                  <FaUser /> {t('home.goToDashboard')}
                 </button>
                 <button 
                   onClick={() => navigate(user.role === 'employer' ? '/post-job' : '/jobs')} 
                   className="btn-secondary"
                 >
-                  <FaBriefcase /> {user.role === 'employer' ? 'Post Job' : 'Find Jobs'}
+                  <FaBriefcase /> {user.role === 'employer' ? t('home.postJob') : t('home.findJobs')}
                 </button>
               </div>
             </>
@@ -73,35 +73,34 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Quick Actions for Logged-in Users */}
       {user && (
         <section className="quick-actions">
-          <h2>Quick Actions</h2>
+          <h2>{t('home.quickActions')}</h2>
           <div className="actions-grid">
             <Link to="/jobs" className="action-card">
               <FaBriefcase className="action-icon" />
-              <h3>Browse Jobs</h3>
-              <p>Find the perfect opportunity</p>
+              <h3>{t('home.browseJobs')}</h3>
+              <p>{t('home.perfectOpportunity')}</p>
             </Link>
 
             {user.role === 'employer' && (
               <Link to="/post-job" className="action-card">
                 <FaCheckCircle className="action-icon" />
-                <h3>Post a Job</h3>
-                <p>Find skilled workers</p>
+                <h3>{t('home.postJob')}</h3>
+                <p>{t('home.findWorkers')}</p>
               </Link>
             )}
 
             <Link to="/wages" className="action-card">
               <FaChartLine className="action-icon" />
-              <h3>Wage Benchmarks</h3>
-              <p>Check fair wages</p>
+              <h3>{t('home.wageBenchmarks')}</h3>
+              <p>{t('home.checkWages')}</p>
             </Link>
 
             <Link to="/dashboard" className="action-card">
               <FaUser className="action-icon" />
-              <h3>My Profile</h3>
-              <p>Manage your account</p>
+              <h3>{t('home.myProfile')}</h3>
+              <p>{t('home.manageAccount')}</p>
             </Link>
           </div>
         </section>

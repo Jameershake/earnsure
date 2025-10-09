@@ -40,10 +40,10 @@ const JobCard = ({ job, onApply }) => {
         </span>
         <div className="job-actions">
           <Link to={`/jobs/${job._id}`} className="btn-view">
-            View Details
+            {t('jobs.viewDetails')}
           </Link>
           <button onClick={() => onApply(job._id)} className="btn-apply">
-            {t('jobs.apply')}
+            {t('jobs.applyNow')}
           </button>
         </div>
       </div>

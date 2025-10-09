@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-content">
         {/* Brand Section */}
         <div className="footer-section footer-brand">
           <h3>💼 EarnSure</h3>
-          <p>Empowering daily wage workers through fair employment opportunities and wage transparency.</p>
+          <p>{t('footer.description')}</p>
           <div className="social-links">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <FaFacebook />
@@ -27,41 +30,41 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div className="footer-section">
-          <h4>Quick Links</h4>
+          <h4>{t('footer.quickLinks')}</h4>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/jobs">Find Jobs</Link></li>
-            <li><Link to="/wages">Wage Benchmarks</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/">{t('footer.home')}</Link></li>
+            <li><Link to="/about">{t('footer.aboutUs')}</Link></li>
+            <li><Link to="/jobs">{t('footer.findJobs')}</Link></li>
+            <li><Link to="/wages">{t('footer.wages')}</Link></li>
+            <li><Link to="/contact">{t('footer.contact')}</Link></li>
           </ul>
         </div>
 
         {/* For Workers */}
         <div className="footer-section">
-          <h4>For Workers</h4>
+          <h4>{t('footer.forWorkers')}</h4>
           <ul>
-            <li><Link to="/register">Register as Worker</Link></li>
-            <li><Link to="/jobs">Browse Jobs</Link></li>
-            <li><Link to="/dashboard">My Dashboard</Link></li>
-            <li><Link to="/profile">My Profile</Link></li>
+            <li><Link to="/register">{t('nav.register')}</Link></li>
+            <li><Link to="/jobs">{t('footer.browseJobs')}</Link></li>
+            <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
+            <li><Link to="/profile">{t('nav.profile')}</Link></li>
           </ul>
         </div>
 
         {/* For Employers */}
         <div className="footer-section">
-          <h4>For Employers</h4>
+          <h4>{t('footer.forEmployers')}</h4>
           <ul>
-            <li><Link to="/register">Register as Employer</Link></li>
-            <li><Link to="/post-job">Post a Job</Link></li>
-            <li><Link to="/dashboard">Manage Applications</Link></li>
-            <li><Link to="/profile">Company Profile</Link></li>
+            <li><Link to="/register">{t('nav.register')}</Link></li>
+            <li><Link to="/post-job">{t('footer.postJobs')}</Link></li>
+            <li><Link to="/dashboard">{t('nav.dashboard')}</Link></li>
+            <li><Link to="/profile">{t('nav.profile')}</Link></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div className="footer-section">
-          <h4>Contact Us</h4>
+          <h4>{t('contact.contactInfo')}</h4>
           <ul className="contact-info-list">
             <li>
               <FaEnvelope className="contact-icon-footer" />
@@ -73,7 +76,7 @@ const Footer = () => {
             <li>
               <FaPhone className="contact-icon-footer" />
               <div>
-                <span>+91 1800-123-4567</span>
+                <span>+91 8897198489</span>
                 <span>Available Mon-Sat, 9 AM - 6 PM</span>
               </div>
             </li>
@@ -92,11 +95,11 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; 2025 EarnSure. All rights reserved.</p>
+          <p>&copy; 2025 EarnSure. {t('footer.copyright')}</p>
           <div className="footer-legal-links">
-            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/privacy">{t('footer.privacyPolicy')}</Link>
             <span className="separator">•</span>
-            <Link to="/terms">Terms of Service</Link>
+            <Link to="/terms">{t('footer.termsOfService')}</Link>
           </div>
         </div>
       </div>

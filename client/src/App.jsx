@@ -15,6 +15,7 @@ import Profile from './pages/profile';
 import About from './pages/About';
 import Contact from './pages/contact';
 import ManageApplications from './pages/ManageApplications';
+import JobDetails from './pages/jobDetails';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import './utils/i18n';
@@ -40,6 +41,8 @@ function App() {
               <Route path="/manage/:jobId" element={<ManageApplications />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/jobs/:id" element={<JobDetails />} />
+
             </Routes>
           </main>
           <Footer />
